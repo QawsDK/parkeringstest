@@ -1,0 +1,535 @@
+input[type=checkbox], input[type=radio] {
+	margin-top: 5px;
+}
+
+/*SELECT ON MAP CONFIRM BTN*/
+#map-select-confirm {
+	bottom: 50px;
+	left: 50%;
+	margin-left: -100px;
+}
+
+/*INTERFACE*/
+.interface-btn-small {
+	height: 30px;
+	width: 30px;
+	border-radius: 4px;
+}
+
+.interface-btn-animate {
+	background-color: rgba(000, 150, 180, 1) !important;
+}
+
+#locate-btn {
+	top: 88px;
+	left: 10px;
+	background-image: url('../img/icons/ic_gps_not_fixed_white_18dp.png');
+	background-size: 24px 24px;
+}
+
+#park-btn {
+	top: 130px;
+	left: 10px;
+	background-image: url('../img/icons/ic_local_parking_white_18dp.png');
+	background-size: 24px 24px;
+}
+
+.choice-btn {
+	display: inline-block;
+	position: absolute;
+	height: 50px;
+	border-radius: 5px;
+	color: #fff;
+	line-height: 50px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.choice-btn-medium {
+	width: 40%;
+}
+
+.choice-btn-large {
+	width: 70%;
+}
+
+/*MENU*/
+#menu {
+	width: 80%;
+}
+
+/*CONTENT PAGE*/
+.content-page {
+	top:0;
+	width: 100%;
+}
+
+.content-open {
+	-webkit-transform: translate3d(-100%, 0, 0);
+	-moz-transform: translate3d(-100%, 0, 0);
+	-ms-transform: translate3d(-100%, 0, 0);
+	-o-transform: translate3d(-100%, 0, 0);
+	transform: translate3d(-100%, 0, 0);
+}
+
+.route-open {
+	left: 0% !important;
+}
+
+.content-closed {
+	-webkit-transform: translate3d(100%, 0, 0);
+	-moz-transform: translate3d(100%, 0, 0);
+	-ms-transform: translate3d(100%, 0, 0);
+	-o-transform: translate3d(100%, 0, 0);
+	transform: translate3d(100%, 0, 0);
+}
+
+.route-closed {
+	left: 100% !important;
+}
+
+/*PARK PAGE*/
+#park-div {
+	position: absolute;
+	padding: 5px;
+	z-index: 10001;
+	top: 50%;
+	left: 50%;
+	height: 150px;
+	width: 250px;
+	margin-left: -125px;
+	margin-top: -175px;
+	background-color: #f8f8f8;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	text-align: center;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+}
+
+.park-button {
+	margin-top: 10px;
+	position: relative;
+	left: 50%;
+	margin-left: -100px;
+	width: 200px;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	vertical-align: middle;
+	color: #fff;
+	border-radius: 6px;
+}
+
+.park-btn-small {
+	margin-left: -50px;
+	width: 100px;
+}
+
+#park-marker, #park-marker-shadow {
+	position: absolute;
+	z-index: 10000;
+	top: 50%;
+	left: 50%;
+	height: 50px;
+	width: 50px;
+	background-repeat: no-repeat;
+	background-position: center;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+}
+
+#park-marker {
+	background-image: url('../img/icons/marker_blue.png');
+	margin-left: -25px;
+	margin-top: -30px;
+}
+
+#park-marker-shadow {
+	background-image: url('../img/icons/marker_shadow.png');
+	margin-left: -25px;
+	margin-top: -25px;
+}
+
+.park-marker-lifted {
+	margin-top: -40px !important;
+}
+
+#park-confirm-btn, #park-done-btn {
+	top: 25px;
+	left: 50%;
+	margin-left: -35%;
+}
+
+#park-confirm-menu {
+	width: 100%;
+}
+
+#park-cancel {
+	top: 25px;
+	left: 5%;
+}
+
+#park-confirm {
+	top: 25px;
+	right: 5%
+}
+
+/*PARKING PLACE POPUP*/
+#park-popup {
+	top: 100%;
+	min-height: 50%;
+	width: 100%;
+	border-top: 1px rgba(160, 160, 160, 0.7) solid;
+}
+
+.park-popup-closed {
+	top: 100% !important;
+}
+
+.park-popup-content {
+	position: absolute;
+	vertical-align: top;
+	width: 100%;
+}
+
+#img-div {
+	height: 100%;
+	width: 100%;
+}
+
+#parking-img {
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 75px;
+	width: 75px;
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	-ms-transition: all 0.5s ease;
+}
+
+#parking-img-toggle {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 25px;
+	width: 25px;
+	border-top-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	color: #fff !important;
+	border: 1px solid #ccc;
+	border-sizing: border-box;
+	font-size: 2em;
+	line-height: 25px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.parking-img-open {
+	height: 50% !important;
+	width: 100% !important;
+}
+
+.parking-img-thumb {
+	height: 100%;
+	width: 100%;
+	border-bottom-left-radius: 5px;;
+}
+
+.parking-img-thumb:first-child {
+	margin-left: 0px;
+}
+
+/*ROUTE DESTINATION POPUP*/
+#route-popup {
+	top: 100%;
+	height: 50%;
+	width: 100%;
+	border-top: 1px rgba(160, 160, 160, 0.7) solid;
+}
+
+.route-popup-open {
+	-webkit-transform: translate3d(0, -100%, 0);
+	-moz-transform: translate3d(0, -100%, 0);
+	-ms-transform: translate3d(0, -100%, 0);
+	-o-transform: translate3d(0, -100%, 0);
+	transform: translate3d(0, -100%, 0);
+}
+
+.route-popup-closed {
+	-webkit-transform: translate3d(0, 100%, 0);
+	-moz-transform: translate3d(0, 100%, 0);
+	-ms-transform: translate3d(0, 100%, 0);
+	-o-transform: translate3d(0, 100%, 0);
+	transform: translate3d(0, 100%, 0);
+}
+
+/*ROUTE PAGE*/
+#route-top-bar {
+	position: fixed;
+	-webkit-backface-visibility: hidden;
+	z-index: 8005;
+}
+
+#route-popup-options {
+	height: 100%;
+	width: 100%;
+}
+
+.address-menu-btn {
+	width: 80%;
+	margin-left: 10%;
+	height: 50px;
+	margin-top: 10px;
+	color: #fff;
+	border-radius: 6px;
+	line-height: 50px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+/*ADDRESS/PLACE SEARCH*/
+#address-search {
+	/*overflow: scroll;*/
+}
+
+#search-button {
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 50px;
+	width: 50px;
+	background-image: url('../img/icons/search.png');
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+#address-ul {
+	background-color: #f8f8f8;
+	width: 100%;
+	height: 100%;
+	overflow: scroll;
+}
+
+#number-ul {
+	background-color: #f8f8f8;
+	width: 100%;
+	height: 100%;
+	overflow: scroll;
+}
+
+.list-object {
+	height: 50px;
+	width: 100%;
+	line-height: 50px;
+	vertical-align: middle;
+	text-align: center;
+	font-size: 1.3em;
+	color: #000;
+}
+
+.selected {
+	color: #fff !important;
+	background-color: rgba(000, 160, 115, 1);
+}
+
+#confirm-btn {
+	position: fixed;
+	-webkit-backface-visibility: hidden;
+	bottom: 0;
+	height: 50px;
+	width: 100%;
+	color: #fff;
+	background-color: rgba(000, 160, 115, 1);
+	line-height: 50px;
+	vertical-align: middle;
+	text-align: center;
+	font-size: 1.8em;
+}
+
+/*ROUTE DESCRIPTION POPUP*/
+#route-description {
+	top: 100%;
+	height: 30%;
+	width: 100%;
+	border-left: 1px rgba(160, 160, 160, 0.7) solid;
+}
+
+.route-description-closed {
+	-webkit-transform: translate3d(0, 100%, 0);
+	-moz-transform: translate3d(0, 100%, 0);
+	-ms-transform: translate3d(0, 100%, 0);
+	-o-transform: translate3d(0, 100%, 0);
+	transform: translate3d(0, 100%, 0);
+}
+
+.route-description-open {
+	-webkit-transform: translate3d(0, -100%, 0);
+	-moz-transform: translate3d(0, -100%, 0);
+	-ms-transform: translate3d(0, -100%, 0);
+	-o-transform: translate3d(0, -100%, 0);
+	transform: translate3d(0, -100%, 0);
+}
+
+/*ROUTE STEP BY STEP*/
+#route-steps {
+	position: absolute;
+	top: 100%;
+	height: 30%;
+	width: 100%;
+	z-index: 7000;
+	background-color: #fff;
+	border-top: 1px rgba(160, 160, 160, 0.7) solid;
+	box-sizing: border-box;
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	-ms-transition: all 0.5s ease;
+}
+
+.route-steps-closed {
+	-webkit-transform: translate3d(0, 100%, 0);
+	-moz-transform: translate3d(0, 100%, 0);
+	-ms-transform: translate3d(0, 100%, 0);
+	-o-transform: translate3d(0, 100%, 0);
+	transform: translate3d(0, 100%, 0);
+}
+
+.route-steps-open {
+	-webkit-transform: translate3d(0, -100%, 0);
+	-moz-transform: translate3d(0, -100%, 0);
+	-ms-transform: translate3d(0, -100%, 0);
+	-o-transform: translate3d(0, -100%, 0);
+	transform: translate3d(0, -100%, 0);
+}
+
+#route-steps .route-options-btn:first-child {
+	border-left: none;
+}
+
+#step-of-steps {
+	float: left;
+	width: 19%;
+}
+
+#route-steps-info {
+	position: absolute;
+	width: 60%;
+	text-align: center;
+}
+
+#close-steps {
+	float: right;
+	width: 19%;
+}
+
+#route-steps-content {
+	width: 100%;
+	height: 100%;
+}
+
+#route-steps-description {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 80%;
+	height: auto;
+	margin-left: -40%;
+	text-align: center;
+}
+
+#route-steps-back, #route-steps-forward {
+	position: absolute;
+	top: 50%;
+	height: 50px;
+	width: 50px;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+/*INFO PAGE*/
+#info-page {
+	top: 120%;
+	margin-left: -45%;
+	width: 90%;
+}
+
+.info-open {
+	top: 5% !important;
+}
+
+.info-closed {
+	top: 120% !important;
+}
+
+/*TUTORIAL PAGE*/
+.slide-btn {
+	position: absolute;
+	top: 50%;
+	width: 50px;
+	height: 50px;
+	border: 1px #000 solid;
+	box-sizing: border-box;
+}
+
+#prev-btn {
+	left: 0%;
+	border-left: 0;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+
+#next-btn {
+	right: 0%;
+	border-right: 0;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+
+#tutorial-content {
+	position: absolute;
+	left: 0%;
+	top: 50px;
+	width: 500%;
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	-ms-transition: all 0.5s ease;
+}
+
+.slide {
+	position: relative;
+	margin: 0;
+	top: 0;
+	display: inline-block;
+	width: 20%;
+	height: 100%;
+}
+
+#tutorial-counter {
+	position: absolute;
+	height: 10%;
+	text-align: center;
+	bottom: 0%;
+	width: 100%;
+}
+
+.circle {
+	display: inline-block;
+	height: 30px;
+	width: 30px;
+	border-radius: 15px;
+	background-color: #ccc;
+	border: 1px #000 solid;
+	box-sizing: border-box;
+}
+
+.circle-active {
+	background-color: #fff !important;
+}

@@ -1,0 +1,49 @@
+/*ADDRESS/PLACE SEARCH*/
+#address-search {
+	/*overflow: scroll;*/
+	height: 100%;
+	width: 100%;
+}
+
+#address-ul {
+	background-color: #f8f8f8;
+	width: 100%;
+	height: 100%;
+	/*overflow: scroll;*/
+}
+
+#number-ul {
+	background-color: #f8f8f8;
+	width: 100%;
+	height: 100%;
+/*	overflow: scroll;*/
+}
+
+.list-object {
+	height: 50px;
+	width: 100%;
+	line-height: 50px;
+	vertical-align: middle;
+	text-align: center;
+	font-size: 1.3em;
+	color: #000;
+}
+
+.selected {
+	color: #fff !important;
+	background-color: rgba(000, 160, 115, 1);
+}
+
+#confirm-btn {
+	position: fixed;
+	-webkit-backface-visibility: hidden;
+	bottom: 0;
+	height: 50px;
+	width: 100%;
+	color: #fff;
+	background-color: rgba(000, 160, 115, 1);
+	line-height: 50px;
+	vertical-align: middle;
+	text-align: center;
+	font-size: 1.8em;
+}

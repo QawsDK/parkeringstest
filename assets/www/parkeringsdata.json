@@ -1,0 +1,389 @@
+{ "type": "FeatureCollection", "features": [{ 
+		"type": "Feature", "properties": {
+			"type": "parkingspot",
+			"id":"odense_p1_kunsten",
+			"name": "Odense P1 Kunsten",
+			"isOpen": "1",
+			"maxCount": "20",
+			"freeCount": "8",
+			"cover": "no",
+			"adress": "",
+			"time_limit": "",
+			"price": "8",
+			"pay_period": "Hverdage kl. 9.00 - 18.00, lørdage kl. 9.00 - 14.00",
+			"payment_options": [{"paymentoption":"M\u00f8nt","value":false},{"paymentoption":"VISA","value":false},{"paymentoption":"Mastercard","value":true},{"paymentoption":"Q-Park key","value":true},{"paymentoption":"Betaling via mobiltelefon","value":true},{"paymentoption":"Dankort\/VISA-dk","value":true},{"paymentoption":"Visa Electron","value":false},{"paymentoption":"JCB","value":false},{"paymentoption":"OK","value":false},{"paymentoption":"Uno-X","value":false},{"paymentoption":"Q8","value":false},{"paymentoption":"Maestro","value":true},{"paymentoption":"Betaling via mobiltelefon: Easypark p\u00e5 www.easypark.dk via appen Easypark eller telefon 70 22 12 36","value":true},{"paymentoption":"Mobilparkering p\u00e5 www.mobilparkering.dk via appen Mobile Parking eller telefon 70233777","value":true}],
+			"photos": "",
+			"links": "",
+			"description": "",
+			"admin_name": "",
+			"admin_phone": ""
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [10.379949, 55.392036]
+		}
+	},{ 
+		"type": "Feature", "properties": {
+			"type": "parkingspot",
+			"id":"odense_p10_graabrodre",
+			"name": "Odense P10 Gråbrødre",
+			"isOpen": "1",
+			"maxCount": "128",
+			"freeCount": "0",
+			"cover": "yes",
+			"adress": "",
+			"time_limit": "",
+			"price": "12",
+			"pay_period": "Hverdage kl. 9.00 - 18.00, lørdage kl. 9.00 - 14.00<br>Bemærk: Sammenbygget med Slotscenteret p-hus, hvor betalingsperiode er 00.00-24.00",
+			"payment_options": [{"paymentoption":"M\u00f8nt","value":false},{"paymentoption":"VISA","value":false},{"paymentoption":"Mastercard","value":true},{"paymentoption":"Q-Park key","value":true},{"paymentoption":"Betaling via mobiltelefon","value":true},{"paymentoption":"Dankort\/VISA-dk","value":true},{"paymentoption":"Visa Electron","value":false},{"paymentoption":"JCB","value":false},{"paymentoption":"OK","value":false},{"paymentoption":"Uno-X","value":false},{"paymentoption":"Q8","value":false},{"paymentoption":"Maestro","value":true},{"paymentoption":"Betaling via mobiltelefon: Easypark p\u00e5 www.easypark.dk via appen Easypark eller telefon 70 22 12 36","value":true},{"paymentoption":"Mobilparkering p\u00e5 www.mobilparkering.dk via appen Mobile Parking eller telefon 70233777","value":true}],
+			"photos": "",
+			"links": "",
+			"description": "",
+			"admin_name": "",
+			"admin_phone": ""
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [10.384143, 55.39636]
+		}
+	},{ 
+		"type": "Feature", "properties": {
+			"type": "parkingspot",
+			"id":"odense_p11_slottet",
+			"name": "Odense P11 Slottet",
+			"isOpen": "1",
+			"maxCount": "32",
+			"freeCount": "4",
+			"cover": "no",
+			"street_name": "Vindegade",
+			"street_number": "20",
+			"postal_code": "5000",
+			"time_limit": "",
+			"price": "12",
+			"pay_period": "Hverdage kl. 9.00 - 18.00, lørdage kl. 9.00 - 14.00",
+			"payment_options": [{"paymentoption":"M\u00f8nt","value":false},{"paymentoption":"VISA","value":false},{"paymentoption":"Mastercard","value":true},{"paymentoption":"Q-Park key","value":true},{"paymentoption":"Betaling via mobiltelefon","value":true},{"paymentoption":"Dankort\/VISA-dk","value":true},{"paymentoption":"Visa Electron","value":false},{"paymentoption":"JCB","value":false},{"paymentoption":"OK","value":false},{"paymentoption":"Uno-X","value":false},{"paymentoption":"Q8","value":false},{"paymentoption":"Maestro","value":true},{"paymentoption":"Betaling via mobiltelefon: Easypark p\u00e5 www.easypark.dk via appen Easypark eller telefon 70 22 12 36","value":true},{"paymentoption":"Mobilparkering p\u00e5 www.mobilparkering.dk via appen Mobile Parking eller telefon 70233777","value":true}],
+			"photos": "http://www.faxedyrehospital.dk/Files/Billeder/Artikler/Fodring_Gammel_Hest.jpg",
+			"links": "",
+			"description": "",
+			"admin_name": "Q-Park",
+			"admin_link": "http://www.q-park.dk",
+			"admin_phone": "+45 12345678"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [10.386555, 55.3985]
+		}
+	},{ 
+		"type": "Feature", "properties": {
+			"type": "parkingspot",
+			"id":"odense_p12_asylgade",
+			"name": "Odense P12 Asylgade",
+			"isOpen": "1",
+			"maxCount": "40",
+			"freeCount": "3",
+			"cover": "no",
+			"adress": "",
+			"time_limit": "",
+			"price": "12",
+			"pay_period": "Hverdage kl. 9.00 - 18.00, lørdage kl. 9.00 - 14.00",
+			"payment_options": [{"paymentoption":"M\u00f8nt","value":false},{"paymentoption":"VISA","value":false},{"paymentoption":"Mastercard","value":true},{"paymentoption":"Q-Park key","value":true},{"paymentoption":"Betaling via mobiltelefon","value":true},{"paymentoption":"Dankort\/VISA-dk","value":true},{"paymentoption":"Visa Electron","value":false},{"paymentoption":"JCB","value":false},{"paymentoption":"OK","value":false},{"paymentoption":"Uno-X","value":false},{"paymentoption":"Q8","value":false},{"paymentoption":"Maestro","value":true},{"paymentoption":"Betaling via mobiltelefon: Easypark p\u00e5 www.easypark.dk via appen Easypark eller telefon 70 22 12 36","value":true},{"paymentoption":"Mobilparkering p\u00e5 www.mobilparkering.dk via appen Mobile Parking eller telefon 70233777","value":true}],
+			"photos": "",
+			"links": "",
+			"description": "",
+			"admin_name": "",
+			"admin_phone": ""
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [10.387023, 55.397152]
+		}
+	},{ 
+		"type": "Feature", "properties": {
+			"type": "parkingspot",
+			"id":"odense_p2_filosofgangen",
+			"name": "Odense P2 Filosofgangen",
+			"isOpen": "1",
+			"maxCount": "17",
+			"freeCount": "2",
+			"cover": "no",
+			"adress": "",
+			"time_limit": "",
+			"price": "12",
+			"pay_period": "Hverdage kl. 9.00 - 18.00, lørdage kl. 9.00 - 14.00",
+			"payment_options": [{"paymentoption":"M\u00f8nt","value":false},{"paymentoption":"VISA","value":false},{"paymentoption":"Mastercard","value":true},{"paymentoption":"Q-Park key","value":true},{"paymentoption":"Betaling via mobiltelefon","value":true},{"paymentoption":"Dankort\/VISA-dk","value":true},{"paymentoption":"Visa Electron","value":false},{"paymentoption":"JCB","value":false},{"paymentoption":"OK","value":false},{"paymentoption":"Uno-X","value":false},{"paymentoption":"Q8","value":false},{"paymentoption":"Maestro","value":true},{"paymentoption":"Betaling via mobiltelefon: Easypark p\u00e5 www.easypark.dk via appen Easypark eller telefon 70 22 12 36","value":true},{"paymentoption":"Mobilparkering p\u00e5 www.mobilparkering.dk via appen Mobile Parking eller telefon 70233777","value":true}],
+			"photos": "",
+			"links": "",
+			"description": "",
+			"admin_name": "",
+			"admin_phone": ""
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [10.381294, 55.393684]
+		}
+	},{ 
+		"type": "Feature", "properties": {
+			"type": "parkingspot",
+			"id":"odense_p3_skt._anne_plads",
+			"name": "Odense P3 Skt. Anne Plads",
+			"isOpen": "1",
+			"maxCount": "20",
+			"freeCount": "3",
+			"cover": "no",
+			"adress": "",
+			"time_limit": "",
+			"price": "12",
+			"pay_period": "Hverdage kl. 9.00 - 18.00, lørdage kl. 9.00 - 14.00",
+			"payment_options": [{"paymentoption":"M\u00f8nt","value":false},{"paymentoption":"VISA","value":false},{"paymentoption":"Mastercard","value":true},{"paymentoption":"Q-Park key","value":true},{"paymentoption":"Betaling via mobiltelefon","value":true},{"paymentoption":"Dankort\/VISA-dk","value":true},{"paymentoption":"Visa Electron","value":false},{"paymentoption":"JCB","value":false},{"paymentoption":"OK","value":false},{"paymentoption":"Uno-X","value":false},{"paymentoption":"Q8","value":false},{"paymentoption":"Maestro","value":true},{"paymentoption":"Betaling via mobiltelefon: Easypark p\u00e5 www.easypark.dk via appen Easypark eller telefon 70 22 12 36","value":true},{"paymentoption":"Mobilparkering p\u00e5 www.mobilparkering.dk via appen Mobile Parking eller telefon 70233777","value":true}],
+			"photos": "",
+			"links": "",
+			"description": "",
+			"admin_name": "",
+			"admin_phone": ""
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [10.384666, 55.393715]
+		}
+	},{ 
+		"type": "Feature", "properties": {
+			"type": "parkingspot",
+			"id":"odense_p4_klaregade",
+			"name": "Odense P4 Klaregade",
+			"isOpen": "1",
+			"maxCount": "13",
+			"freeCount": "2",
+			"cover": "no",
+			"adress": "",
+			"time_limit": "",
+			"price": "12",
+			"pay_period": "Hverdage kl. 9.00 - 18.00, lørdage kl. 9.00 - 14.00",
+			"payment_options": [{"paymentoption":"M\u00f8nt","value":false},{"paymentoption":"VISA","value":false},{"paymentoption":"Mastercard","value":true},{"paymentoption":"Q-Park key","value":true},{"paymentoption":"Betaling via mobiltelefon","value":true},{"paymentoption":"Dankort\/VISA-dk","value":true},{"paymentoption":"Visa Electron","value":false},{"paymentoption":"JCB","value":false},{"paymentoption":"OK","value":false},{"paymentoption":"Uno-X","value":false},{"paymentoption":"Q8","value":false},{"paymentoption":"Maestro","value":true},{"paymentoption":"Betaling via mobiltelefon: Easypark p\u00e5 www.easypark.dk via appen Easypark eller telefon 70 22 12 36","value":true},{"paymentoption":"Mobilparkering p\u00e5 www.mobilparkering.dk via appen Mobile Parking eller telefon 70233777","value":true}],
+			"photos": "",
+			"links": "",
+			"description": "",
+			"admin_name": "",
+			"admin_phone": ""
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [10.386967, 55.393368]
+		}
+	},{ 
+		"type": "Feature", "properties": {
+			"type": "parkingspot",
+			"id":"odense_p5_munkemolle",
+			"name": "Odense P5 Munkemølle",
+			"isOpen": "1",
+			"maxCount": "13",
+			"freeCount": "2",
+			"cover": "no",
+			"adress": "",
+			"time_limit": "",
+			"price": "12",
+			"pay_period": "",
+			"payment_options": [{"paymentoption":"M\u00f8nt","value":false},{"paymentoption":"VISA","value":false},{"paymentoption":"Mastercard","value":true},{"paymentoption":"Q-Park key","value":true},{"paymentoption":"Betaling via mobiltelefon","value":true},{"paymentoption":"Dankort\/VISA-dk","value":true},{"paymentoption":"Visa Electron","value":false},{"paymentoption":"JCB","value":false},{"paymentoption":"OK","value":false},{"paymentoption":"Uno-X","value":false},{"paymentoption":"Q8","value":false},{"paymentoption":"Maestro","value":true},{"paymentoption":"Betaling via mobiltelefon: Easypark p\u00e5 www.easypark.dk via appen Easypark eller telefon 70 22 12 36","value":true},{"paymentoption":"Mobilparkering p\u00e5 www.mobilparkering.dk via appen Mobile Parking eller telefon 70233777","value":true}],
+			"photos": "",
+			"links": "",
+			"description": "",
+			"admin_name": "",
+			"admin_phone": ""
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [10.388275, 55.393307]
+		}
+	},{ 
+		"type": "Feature", "properties": {
+			"type": "parkingspot",
+			"id":"odense_p6_kronprinsensgade",
+			"name": "Odense P6 Kronprinsensgade",
+			"isOpen": "1",
+			"maxCount": "60",
+			"freeCount": "19",
+			"cover": "no",
+			"adress": "",
+			"time_limit": "",
+			"price": "8",
+			"pay_period": "Hverdage kl. 9.00 - 18.00, lørdage kl. 9.00 - 14.00",
+			"payment_options": [{"paymentoption":"M\u00f8nt","value":false},{"paymentoption":"VISA","value":false},{"paymentoption":"Mastercard","value":true},{"paymentoption":"Q-Park key","value":true},{"paymentoption":"Betaling via mobiltelefon","value":true},{"paymentoption":"Dankort\/VISA-dk","value":true},{"paymentoption":"Visa Electron","value":false},{"paymentoption":"JCB","value":false},{"paymentoption":"OK","value":false},{"paymentoption":"Uno-X","value":false},{"paymentoption":"Q8","value":false},{"paymentoption":"Maestro","value":true},{"paymentoption":"Betaling via mobiltelefon: Easypark p\u00e5 www.easypark.dk via appen Easypark eller telefon 70 22 12 36","value":true},{"paymentoption":"Mobilparkering p\u00e5 www.mobilparkering.dk via appen Mobile Parking eller telefon 70233777","value":true}],
+			"photos": "",
+			"links": "",
+			"description": "",
+			"admin_name": "",
+			"admin_phone": ""
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [10.392431, 55.39475]
+		}
+	},{ 
+		"type": "Feature", "properties": {
+			"type": "parkingspot",
+			"id":"odense_p7_kongestien",
+			"name": "Odense P7 Kongestien",
+			"isOpen": "1",
+			"maxCount": "36",
+			"freeCount": "6",
+			"cover": "no",
+			"adress": "",
+			"time_limit": "",
+			"price": "12",
+			"pay_period": "Hverdage kl. 9.00 - 18.00, lørdage kl. 9.00 - 14.00",
+			"payment_options": [{"paymentoption":"M\u00f8nt","value":false},{"paymentoption":"VISA","value":false},{"paymentoption":"Mastercard","value":true},{"paymentoption":"Q-Park key","value":true},{"paymentoption":"Betaling via mobiltelefon","value":true},{"paymentoption":"Dankort\/VISA-dk","value":true},{"paymentoption":"Visa Electron","value":false},{"paymentoption":"JCB","value":false},{"paymentoption":"OK","value":false},{"paymentoption":"Uno-X","value":false},{"paymentoption":"Q8","value":false},{"paymentoption":"Maestro","value":true},{"paymentoption":"Betaling via mobiltelefon: Easypark p\u00e5 www.easypark.dk via appen Easypark eller telefon 70 22 12 36","value":true},{"paymentoption":"Mobilparkering p\u00e5 www.mobilparkering.dk via appen Mobile Parking eller telefon 70233777","value":true}],
+			"photos": "",
+			"links": "",
+			"description": "",
+			"admin_name": "",
+			"admin_phone": ""
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [10.382004, 55.395294]
+		}
+	},{ 
+		"type": "Feature", "properties": {
+			"type": "parkingspot",
+			"id":"odense_p8_klostervej",
+			"name": "Odense P8 Klostervej",
+			"isOpen": "1",
+			"maxCount": "72",
+			"freeCount": "6",
+			"cover": "no",
+			"adress": "",
+			"time_limit": "",
+			"price": "12",
+			"pay_period": "Hverdage kl. 9.00 - 18.00, lørdage kl. 9.00 - 14.00",
+			"payment_options": [{"paymentoption":"M\u00f8nt","value":false},{"paymentoption":"VISA","value":false},{"paymentoption":"Mastercard","value":true},{"paymentoption":"Q-Park key","value":true},{"paymentoption":"Betaling via mobiltelefon","value":true},{"paymentoption":"Dankort\/VISA-dk","value":true},{"paymentoption":"Visa Electron","value":false},{"paymentoption":"JCB","value":false},{"paymentoption":"OK","value":false},{"paymentoption":"Uno-X","value":false},{"paymentoption":"Q8","value":false},{"paymentoption":"Maestro","value":true},{"paymentoption":"Betaling via mobiltelefon: Easypark p\u00e5 www.easypark.dk via appen Easypark eller telefon 70 22 12 36","value":true},{"paymentoption":"Mobilparkering p\u00e5 www.mobilparkering.dk via appen Mobile Parking eller telefon 70233777","value":true}],
+			"photos": "",
+			"links": "",
+			"description": "",
+			"admin_name": "",
+			"admin_phone": ""
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [10.382108, 55.397015]
+		}
+	},{ 
+		"type": "Feature", "properties": {
+			"type": "parkingspot",
+			"id":"odense_p9_vinden",
+			"name": "Odense P9 Vinden",
+			"isOpen": "1",
+			"maxCount": "26",
+			"freeCount": "8",
+			"cover": "no",
+			"adress": "",
+			"time_limit": "",
+			"price": "12",
+			"pay_period": "Hverdage kl. 9.00 - 18.00, lørdage kl. 9.00 - 14.00",
+			"payment_options": [{"paymentoption":"M\u00f8nt","value":false},{"paymentoption":"VISA","value":false},{"paymentoption":"Mastercard","value":true},{"paymentoption":"Q-Park key","value":true},{"paymentoption":"Betaling via mobiltelefon","value":true},{"paymentoption":"Dankort\/VISA-dk","value":true},{"paymentoption":"Visa Electron","value":false},{"paymentoption":"JCB","value":false},{"paymentoption":"OK","value":false},{"paymentoption":"Uno-X","value":false},{"paymentoption":"Q8","value":false},{"paymentoption":"Maestro","value":true},{"paymentoption":"Betaling via mobiltelefon: Easypark p\u00e5 www.easypark.dk via appen Easypark eller telefon 70 22 12 36","value":true},{"paymentoption":"Mobilparkering p\u00e5 www.mobilparkering.dk via appen Mobile Parking eller telefon 70233777","value":true}],
+			"photos": "",
+			"links": "",
+			"description": "",
+			"admin_name": "",
+			"admin_phone": ""
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [10.38314, 55.39807]
+		}
+	},{ 
+		"type": "Feature", "properties": {
+			"type": "parkingspot",
+			"id": "",
+			"name": "Banegårdspladsen p-plads og -kælder",
+			"isOpen": "1",
+			"maxCount": "100",
+			"freeCount": "",
+			"cover": "yes",
+			"adress": "",
+			"time_limit": "",
+			"price": "15",
+			"pay_period": "00.00 - 24.00",
+			"payment_options": [{"paymentoption":"M\u00f8nt","value":false},{"paymentoption":"VISA","value":false},{"paymentoption":"Mastercard","value":true},{"paymentoption":"Q-Park key","value":true},{"paymentoption":"Betaling via mobiltelefon","value":true},{"paymentoption":"Dankort\/VISA-dk","value":true},{"paymentoption":"Visa Electron","value":false},{"paymentoption":"JCB","value":false},{"paymentoption":"OK","value":false},{"paymentoption":"Uno-X","value":false},{"paymentoption":"Q8","value":false},{"paymentoption":"Maestro","value":true},{"paymentoption":"Betaling via mobiltelefon: Easypark p\u00e5 www.easypark.dk via appen Easypark eller telefon 70 22 12 36","value":true},{"paymentoption":"Mobilparkering p\u00e5 www.mobilparkering.dk via appen Mobile Parking eller telefon 70233777","value":true}],
+			"photos": "",
+			"links": "",
+			"description": "",
+			"admin_name": "",
+			"admin_phone": ""
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [10.387862920761108, 55.400329361476544]
+		}
+	},{ 
+		"type": "Feature", "properties": {
+			"type": "parkingspot",
+			"id":"",
+			"name": "Brandts p-kælder",
+			"isOpen": "1",
+			"maxCount": "100",
+			"freeCount": "",
+			"cover": "yes",
+			"adress": "",
+			"time_limit": "",
+			"price": "0",
+			"pay_period": "00.00 - 24.00",
+			"payment_options": [{"paymentoption":"M\u00f8nt","value":false},{"paymentoption":"VISA","value":false},{"paymentoption":"Mastercard","value":true},{"paymentoption":"Q-Park key","value":true},{"paymentoption":"Betaling via mobiltelefon","value":true},{"paymentoption":"Dankort\/VISA-dk","value":true},{"paymentoption":"Visa Electron","value":false},{"paymentoption":"JCB","value":false},{"paymentoption":"OK","value":false},{"paymentoption":"Uno-X","value":false},{"paymentoption":"Q8","value":false},{"paymentoption":"Maestro","value":true},{"paymentoption":"Betaling via mobiltelefon: Easypark p\u00e5 www.easypark.dk via appen Easypark eller telefon 70 22 12 36","value":true},{"paymentoption":"Mobilparkering p\u00e5 www.mobilparkering.dk via appen Mobile Parking eller telefon 70233777","value":true}],
+			"photos": "",
+			"links": "",
+			"description": "",
+			"admin_name": "",
+			"admin_phone": ""
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [10.379505157470703, 55.395960975642495]
+		}
+	},{ 
+		"type": "Feature", "properties": {
+			"type": "parkingspot",
+			"id":"",
+			"name": "Dannebrogsgade p-plads",
+			"isOpen": "1",
+			"maxCount": "50",
+			"freeCount": "",
+			"cover": "no",
+			"adress": "",
+			"time_limit": "",
+			"price": "0",
+			"pay_period": "",
+			"payment_options": [{"paymentoption":"M\u00f8nt","value":false},{"paymentoption":"VISA","value":false},{"paymentoption":"Mastercard","value":true},{"paymentoption":"Q-Park key","value":true},{"paymentoption":"Betaling via mobiltelefon","value":true},{"paymentoption":"Dankort\/VISA-dk","value":true},{"paymentoption":"Visa Electron","value":false},{"paymentoption":"JCB","value":false},{"paymentoption":"OK","value":false},{"paymentoption":"Uno-X","value":false},{"paymentoption":"Q8","value":false},{"paymentoption":"Maestro","value":true},{"paymentoption":"Betaling via mobiltelefon: Easypark p\u00e5 www.easypark.dk via appen Easypark eller telefon 70 22 12 36","value":true},{"paymentoption":"Mobilparkering p\u00e5 www.mobilparkering.dk via appen Mobile Parking eller telefon 70233777","value":true}],
+			"photos": "",
+			"links": "",
+			"description": "",
+			"admin_name": "",
+			"admin_phone": ""
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [10.386360883712767, 55.40357639824026]
+		}
+	}, { 
+		"type": "Feature", "properties": {
+			"type": "parkingspot",
+			"id":"",
+			"name": "Enggade",
+			"isOpen": "1",
+			"maxCount": "20",
+			"freeCount": "",
+			"cover": "no",
+			"adress": "",
+			"time_limit": "",
+			"price": "17",
+			"pay_period": "",
+			"payment_options": [{"paymentoption":"M\u00f8nt","value":false},{"paymentoption":"VISA","value":false},{"paymentoption":"Mastercard","value":true},{"paymentoption":"Q-Park key","value":true},{"paymentoption":"Betaling via mobiltelefon","value":true},{"paymentoption":"Dankort\/VISA-dk","value":true},{"paymentoption":"Visa Electron","value":false},{"paymentoption":"JCB","value":false},{"paymentoption":"OK","value":false},{"paymentoption":"Uno-X","value":false},{"paymentoption":"Q8","value":false},{"paymentoption":"Maestro","value":true},{"paymentoption":"Betaling via mobiltelefon: Easypark p\u00e5 www.easypark.dk via appen Easypark eller telefon 70 22 12 36","value":true},{"paymentoption":"Mobilparkering p\u00e5 www.mobilparkering.dk via appen Mobile Parking eller telefon 70233777","value":true}],
+			"photos": "",
+			"links": "",
+			"description": "",
+			"admin_name": "",
+			"admin_phone": ""
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [10.393699407577515, 55.40193768319733]
+		}
+	}
+]}

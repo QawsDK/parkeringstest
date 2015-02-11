@@ -1,0 +1,32 @@
+﻿<script>
+$('#prev-btn').click(function() {
+	tutorialSlide('prev');
+});
+
+$('#next-btn').click(function() {
+	tutorialSlide('next');
+});
+</script>
+
+<div class="content-top-bar">
+	<div class="back-btn" onclick="closeOverlayPage();"><img class="back-img" src="img/icons/ic_chevron_left_grey600_18dp.png"></div>
+	<div class="content-headline">Brugervejledning</div>
+</div>
+<div id="tutorial-content">
+	<div class="slide blue"></div><div class="slide green"></div><div class="slide pink"></div><div class="slide yellow"></div><div class="slide purple"></div>  
+</div>
+
+<div id="tutorial-counter">
+	<div class="circle circle-active" id="circle-1"></div>
+	<div class="circle" id="circle-2"></div>
+	<div class="circle" id="circle-3"></div>
+	<div class="circle" id="circle-4"></div>
+	<div class="circle" id="circle-5"></div>
+</div>
+
+<div class="slide-btn" id="prev-btn">
+</div>
+
+<div class="slide-btn" id="next-btn">
+</div>
+

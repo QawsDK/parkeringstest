@@ -1,0 +1,4 @@
+/*MENU*/
+$('#menu').click(function() {
+	
+});

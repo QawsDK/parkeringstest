@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+		<meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Parkeringshenvisning - Beta</title>
+        <meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,  minimum-scale=1, user-scalable=no">
+        
+		<!--<meta property="og:title" content="Trafik i Odense - Find vej i fremtidens Odense"/>
+		<meta property="og:site_name" content="Trafik i Odense"/>
+		<meta property="og:url" content="http://apps.odense.dk/parkering/"/>	
+		<link rel="canonical" href="http://apps.odense.dk/parkering/" />-->
+
+        <noscript>
+			Din browser understøtter ikke Javascript eller Javascript er slået fra i dine browser indstillinger. Javascript er påkrævet for at bruge denne side
+        </noscript>
+		
+		 <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>');</script>
+		
+		<!--FONT-->
+		<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700' rel='stylesheet' type='text/css'>
+		
+		 <!--SKELETON-->
+		<link rel="stylesheet" href="css/base.css">
+
+        <!--LEAFLET-->
+        <link rel="stylesheet" href="css/leaflet.css">
+		
+		<!--MAIN CSS-->
+		<link rel="stylesheet" href="css/main.css">
+		
+		 <!--INTERFACE-->
+        <script>
+			var version;
+			var wp = false;
+			
+			function detectMobile() { 
+				if( navigator.userAgent.match(/Android/i)) {	
+				   /* var ua = navigator.userAgent;
+				    var androidversion = parseFloat(ua.slice(ua.indexOf("Android")+8)); 
+					if (androidversion > 2.3)	{
+						$('head').append('<link rel="stylesheet" href="css/interfacemobile.css">');
+						$('head').append('<script src="js/interfacemobile.js">');
+						version = 'mobile';
+					}
+					else {*/
+						$('head').append('<link rel="stylesheet" href="css/interfacemobile.css">');
+						$('head').append('<script src="js/interfacemobile.js">');
+						version = 'mobile';
+					//}
+				}
+				else if(navigator.userAgent.match(/webOS/i)
+				|| navigator.userAgent.match(/iPhone/i)
+				|| navigator.userAgent.match(/iPad/i)
+				|| navigator.userAgent.match(/iPod/i)
+				){
+					$('head').append('<link rel="stylesheet" href="css/interfacemobile.css">');
+					$('head').append('<script src="js/interfacemobile.js">');
+					version = 'mobile';
+				}
+				else if(navigator.userAgent.match(/Windows Phone/i)) {
+					$('head').append('<link rel="stylesheet" href="css/interfacemobile.css">');
+					$('head').append('<link rel="stylesheet" href="css/interfacemobilewp.css">');
+					$('head').append('<script src="js/interfacemobile.js">');
+					version = 'mobile';
+					wp = true;
+				}
+				else {
+					$('head').append('<link rel="stylesheet" href="css/interface.css">');	
+					$('head').append('<script src="js/interface.js">');					
+					version = 'pc';
+				}
+			}
+			detectMobile();
+        </script>
+        
+    </head>
+    <body>
+		<!--KORT DIV-->
+        <div id="map-canvas">		
+		</div>
+
+		<!--IMG DIV-->
+		<div id="img-div">
+		</div>
+		
+		<!--LOAD SPINNER-->
+		<div id="spinner-bg" class="hidden">
+		</div>
+		<div id="spinner-div" class="hidden">
+			<div id="spinner-text"></div>
+			<div id="spinner"></div>
+			<div id="position-error" class="hidden">
+				Hvis det trækker ud, så tjek om din gps er slået til og find eventuelt et sted med bedre signal.
+				
+				<div id="cancel-gps" class="blue" onclick="cancelGPS();">Afbryd</div>
+			</div>
+		</div>
+		
+		<!--SELECT ON MAP CONFIRM BTN-->
+		<div id="map-select-confirm" class="hidden green">Bekræft position</div>
+		
+		<!--INTERFACE-->
+		<div id="interface">
+			<div class="interface-btn" id="readout-btn" onclick="toggleOverlayPage('readout'); btnAnimate(this);"></div>
+			<div class="interface-btn" id="filter-btn" onclick="toggleOverlayPage('filter'); btnAnimate(this);"></div>
+			<div class="interface-btn" id="menu-btn" onclick="toggleMenu(); btnAnimate(this);">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</div>
+			<div class="interface-btn" id="info-btn" onclick="toggleInfoPage(); btnAnimate(this);"></div>
+			<div class="interface-btn interface-btn-small" id="locate-btn" onclick="locate();"></div>
+			<div class="interface-btn interface-btn-small" id="park-btn" onclick="park();"></div>
+		</div>
+		
+		<!--PARKING SPOT INFO POPUP-->
+		<div class="park-popup-closed park-popup-open hidden" id="park-popup"></div>
+		
+		<!--PARK FUNCTION-->
+		<div id="park-div" class="hidden">
+			Finder position<br>
+			<img src="img/ajax-loader.gif"><br>
+			Tjek eventuelt om din gps er slået til og find eventuelt et sted med bedre signal.<br>
+			<div id="marker-self" class="park-button blue" onclick="stopParkLocate();">Marker selv position på kortet</div>
+			<div id="user-stop" class="park-button blue hidden" onclick="stopUserLocation();">Afbryd</div>
+		</div>
+		<div id="park-marker" class="hidden"></div>
+		<div id="park-marker-shadow" class="hidden"></div>
+
+        <!--MENU-->
+        <div class="menu-closed hidden" id="menu">
+        </div>
+
+        <!--MENU FADE BG-->
+        <div class="hidden" id="menu-bg" onclick="backgroundClick();"></div>
+		
+		<!--ICONS INFO PAGE-->
+		<div class="hidden info-closed" id="info-page">
+			<div class="info-top">
+				<div class="close-btn" onclick="toggleInfoPage();"><img class="close-img" src="img/icons/close_blue.png"></div>
+				<div class="content-headline">Signaturforklaring</div>
+			</div>
+			<div class="info-content" id="info-content">
+				
+			</div>
+		</div>
+		
+		<!--ROUTE START/END POPUP -->
+		<div id="route-popup" class="hidden route-popup-open route-popup-closed">
+			<div id="route-headline">
+				Ruteberegning
+			</div>
+			<div id="route-start-end">	
+				<div id="route-start" onclick="toggleOverlayPage('route');">
+					Min position (Tryk for at ændre)
+				</div>
+				<div id="route-spacer-line">
+				</div>
+				<div id="route-end">
+				</div>
+				<div id="route-graphic" onclick="swapPoints();">
+				</div>
+			</div>
+			<div id="route-calculate-btn" class="address-menu-btn blue" onclick="calculateRoute();">Beregn rute</div>
+		</div>
+		
+		<!--ROUTE DESTINATION OPTIONS PAGE-->
+		<div class="hidden content-page route-closed" id="route-page">
+			<div class="content-top-bar" id="route-top-bar">
+				<div class="back-btn" id="route-back-btn" onclick="backAnimate(this); toggleOverlayPage('route');"></div>
+				<div class="content-headline" id="route-menu-headline">Ruteberegning</div>
+			</div>
+			<div class="content" id="route-content">
+				<div id="route-popup-options">
+					<div class="address-menu-btn green" onclick="toggleRouteOptions('my-position');">Brug min position</div>
+					<div class="address-menu-btn green" onclick="toggleRouteOptions('address-search');">Vælg en adresse</div>
+					<div class="address-menu-btn green" onclick="toggleRouteOptions('parkingspot');">Vælg en p-plads</div>
+					<div class="address-menu-btn green" onclick="toggleRouteOptions('place');">Vælg et sted</div>
+					<div class="address-menu-btn green" onclick="toggleRouteOptions('highway');">Vælg en indfaldsvej</div>
+					<div class="address-menu-btn green" onclick="toggleRouteOptions('history');">Vælg fra historik</div>
+					<div class="address-menu-btn green" onclick="selectOnMap();">Vælg på kort</div>	
+				</div>
+				<div id="address-search" class="hidden">
+					<ul id="address-ul">
+					</ul>
+				</div>
+				<div id="number-search" class="hidden">
+					<ul id="number-ul">
+					</ul>
+				</div>
+				<div id="confirm-btn" class="hidden">
+					Bekræft valg
+				</div>
+				<div id="parkingspot" class="hidden">
+					<ul>
+						<li id="asylgadepplads" class="list-object" data-value="55.39725874736245,10.387122631072998" onclick="selectObject(this,'place');">Asylgade p-plads</li>
+						<li id="banegårdspladsenppladsogkælder" class="list-object" data-value="55.400329361476544,10.387862920761108" onclick="selectObject(this,'place');">Banegårdspladsen p-plads og -kælder</li>
+						<li id="brandtspkælder" class="list-object" data-value="55.395960975642495,10.379505157470703" onclick="selectObject(this,'place');">Brandts p-kælder</li>
+						<li id="dannebrogsgadepplads" class="list-object" data-value="55.40357639824026,10.386360883712767" onclick="selectObject(this,'place');">Dannebrogsgade p-plads</li>
+						<li id="enggadepplads" class="list-object" data-value="55.40193768319733,10.393699407577515" onclick="selectObject(this,'place');">Enggade p-plads</li>
+						<li id="filosoffenphus" class="list-object" data-value="55.393505450613006,10.38156509399414" onclick="selectObject(this,'place');">Filosoffen p-hus</li>
+						<li id="filosofgangenpplads" class="list-object" data-value="55.393350071069754,10.381870865821838" onclick="selectObject(this,'place');">Filosofgangen p-plads</li>
+						<li id="fisketorvetpkælder" class="list-object" data-value="55.39720391279975,10.38927912712097" onclick="selectObject(this,'place');">Fisketorvet p-kælder</li>
+						<li id="grønnegadepkælder" class="list-object" data-value="55.396832254314205,10.37982165813446" onclick="selectObject(this,'place');">Grønnegade p-kælder</li>
+						<li id="klaregadepplads" class="list-object" data-value="55.39334702440594,10.387122631072998" onclick="selectObject(this,'place');">Klaregade p-plads</li>
+						<li id="klosterbakkenpplads" class="list-object" data-value="55.39377050842445,10.388908982276915" onclick="selectObject(this,'place');">Klosterbakken p-plads</li>
+						<li id="klostervejpplads" class="list-object" data-value="55.39702113037467,10.38205862045288" onclick="selectObject(this,'place');">Klostervej p-plads</li>
+						<li id="kongestienpplads" class="list-object" data-value="55.39532121334192,10.381983518600464" onclick="selectObject(this,'place');">Kongestien p-plads</li>
+						<li id="kronprinsensgadepplads" class="list-object" data-value="55.394736278749605,10.392390489578247" onclick="selectObject(this,'place');">Kronprinsensgade p-plads</li>
+						<li id="kunstenpplads" class="list-object" data-value="55.39196990832514,10.380052328109741" onclick="selectObject(this,'place');">Kunsten p-plads</li>
+						<li id="magasinpkælder" class="list-object" data-value="55.39482462880022,10.387396216392517" onclick="selectObject(this,'place');">Magasin p-kælder</li>
+						<li id="munkemøllepplads" class="list-object" data-value="55.39327390440396,10.388469099998474" onclick="selectObject(this,'place');">Munke Mølle p-plads</li>
+						<li id="nørregadepplads" class="list-object" data-value="55.39880626921108,10.388860702514648" onclick="selectObject(this,'place');">Nørregade p-plads</li>
+						<li id="odensebanegårdcenterphus" class="list-object" data-value="55.40208389101762,10.387498140335083" onclick="selectObject(this,'place');">Odense Banegård Center p-hus</li>
+						<li id="oouspplads" class="list-object" data-value="55.40028062343304,10.382219552993774" onclick="selectObject(this,'place');">OPUS p-plads</li>
+						<li id="pjentedamsgadepplads" class="list-object" data-value="55.40101777992136,10.391596555709839" onclick="selectObject(this,'place');">Pjentedamsgade p-plads</li>
+						<li id="sktannepladspplads" class="list-object" data-value="55.393861907257744,10.384671092033386" onclick="selectObject(this,'place');">Skt. Anne Plads p-plads</li>
+						<li id="slotsgadepplads" class="list-object" data-value="55.397194773698565,10.384306311607359" onclick="selectObject(this,'place');">Slotsgade p-plads</li>
+						<li id="slottetpplads" class="list-object" data-value="55.39847727357404,10.386672019958496" onclick="selectObject(this,'place');">Slottet p-plads</li>
+						<li id="sortebrødrestrædepplads" class="list-object" data-value="55.398669188028435,10.393377542495728" onclick="selectObject(this,'place');">Sortebrødre Stræde p-plads</li>
+						<li id="storegråbrødrestrædephus" class="list-object" data-value="55.39635701378293,10.384182929992674" onclick="selectObject(this,'place');">Store Gråbrødre Stræde p-hus</li>
+						<li id="tbtgadepplads" class="list-object" data-value="55.39762430917003,10.389654636383057" onclick="selectObject(this,'place');">TBT Gade p-plads (fra 01.08.14)</li>
+						<li id="toldkammeretpplads" class="list-object" data-value="55.39925711063674,10.378968715667725" onclick="selectObject(this,'place');">Toldkammeret p-plads</li>
+						<li id="overgadepplads" class="list-object" data-value="55.39737450896728,10.391864776611328" onclick="selectObject(this,'place');">Overgade p-plads</li>
+						<li id="vindenpplads" class="list-object" data-value="55.398056886275135,10.383217334747314" onclick="selectObject(this,'place');">Vinden p-plads</li>
+						<li class="list-object"></li>
+					</ul>
+				</div>
+				<div id="place" class="hidden">
+					<ul>
+						<li id="brandtsklædefabrik" class="list-object" data-value="55.395625863347746,10.38077116012573" onclick="selectObject(this,'place');">Brandts Klædefabrik</li>
+						<li id="byensø" class="list-object" data-value="55.4085,10.3785" onclick="selectObject(this,'place');">Byens Ø</li>
+						<li id="denfynskeopera" class="list-object" data-value="55.39276959999999,10.381594500000005" onclick="selectObject(this,'place');">Den Fynske Opera</li>
+						<li id="dexter" class="list-object" data-value="55.3974218,10.379433199999994" onclick="selectObject(this,'place');">Dexter</li>
+						<li id="denfynskelandsby" class="list-object" data-value="55.366509,10.385291000000052" onclick="selectObject(this,'place');">Den Fynske Landsby</li>
+						<li id="hanschristianandersenairport" class="list-object" data-value="55.47221946945525,10.331295132637024" onclick="selectObject(this,'place');">Hans Christian Andersen Airport</li>
+						<li id="jernbanemuseet" class="list-object" data-value="55.40256507724954,10.386634370738989" onclick="selectObject(this,'place');">Jernbanemuseet</li>
+						<li id="koncerthuset" class="list-object" data-value="55.39934689632224,10.392189225608831" onclick="selectObject(this,'place');">Koncerthuset</li>
+						<li id="kulturmaskinenfarvergården" class="list-object" data-value="55.394940399883005,10.380881448379569" onclick="selectObject(this,'place');">Kulturmaskinen / Farvergården</li>
+						<li id="lindøindustripark" class="list-object" data-value="55.4668403111039,10.538603067398071" onclick="selectObject(this,'place');">Lindø Industripark</li>
+						<li id="møntergården" class="list-object" data-value="55.39866164497172,10.39376692497558" onclick="selectObject(this,'place');">Møntergården</li>
+						<li id="nørregaardsteater" class="list-object" data-value="55.39299215905347,10.381721124289697" onclick="selectObject(this,'place');">Nørregaards Teater</li>
+						<li id="nytouh" class="list-object" data-value="55.3609,10.4274" onclick="selectObject(this,'place');">Nyt OUH</li>
+						<li id="odensebanegårdcentersyd" class="list-object" data-value="55.4011,10.3871" onclick="selectObject(this,'place');">Odense Banegård Center syd</li>
+						<li id="ddensebanegårdcenternord" class="list-object" data-value="55.4024,10.3875" onclick="selectObject(this,'place');">Odense Banegård Center nord</li>
+						<li id="odenseteater" class="list-object" data-value="55.3985,10.3849" onclick="selectObject(this,'place');">Odense Teater</li>
+						<li id="odenseuniversitetshospital" class="list-object" data-value="55.3847,10.3701" onclick="selectObject(this,'place');">Odense Universitetshospital</li>
+						<li id="posten" class="list-object" data-value="55.40090971676387,10.38379447185821" onclick="selectObject(this,'place');">Posten</li>
+						<li id="rosengårdscenteret" class="list-object" data-value="55.3842,10.428" onclick="selectObject(this,'place');">Rosengårdcenteret</li>
+						<li id="sparekassenfynarena" class="list-object" data-value="55.3726,10.4471" onclick="selectObject(this,'place');">Sparekassen Fyn Arena</li>
+						<li id="stigeørødehusene" class="list-object" data-value="55.44879394189689,10.425896644592285" onclick="selectObject(this,'place');">Stige Ø - Rødehusene</li>
+						<li id="studenterhuset" class="list-object" data-value="55.3954477159637,10.380573138831323" onclick="selectObject(this,'place');">Studenterhuset</li>
+						<li id="syddanskuniversitet" class="list-object" data-value="55.3686,10.4281" onclick="selectObject(this,'place');">Syddansk Universitet</li>
+						<li id="tarupcenter" class="list-object" data-value="55.4103,10.3394" onclick="selectObject(this,'place');">Tarup Center</li>
+						<li id="teatermomentum" class="list-object" data-value="55.39279412362439,10.381179318068689" onclick="selectObject(this,'place');">Teater Momentum</li>
+						<li id="treforparkodensestadion" class="list-object" data-value="55.3971,10.3488" onclick="selectObject(this,'place');">Trefor Park / Odense Stadion</li>
+						<li id="tusindårsskoven" class="list-object" data-value="55.38201790742991,10.34022988854985" onclick="selectObject(this,'place');">Tusindårsskoven</li>
+						<li id="viva" class="list-object" data-value="55.4008,10.3788" onclick="selectObject(this,'place');">VIVA</li>
+						<li class="list-object"></li>
+					</ul>
+				</div>
+				<div id="highway" class="hidden">
+					<ul>
+						<li id="rutee20retningmiddelfart" class="list-object" data-value="55.38753965648097,10.210118293762207" onclick="selectObject(this,'place');">Rute E20 Middelfart / Rute 161 Middelfartvej</li>
+						<li id="rutee20retningnyborglangeskovvej" class="list-object" data-value="55.35461105820118,10.564320087432861" onclick="selectObject(this,'place');">Rute E20 Nyborg / Langeskovvej</li>
+						<li id="rute9retningsvendborg" class="list-object" data-value="55.30521256709956,10.435466766357422" onclick="selectObject(this,'place');">Rute 9 retning Svendborg</li>
+						<li id="rute43retningfåborg" class="list-object" data-value="55.28748637180387,10.387272834777832" onclick="selectObject(this,'place');">Rute 43 retning Fåborg</li>
+						<li id="rute160nyborgvej" class="list-object" data-value="55.38657066317093,10.509624481201172" onclick="selectObject(this,'place');">Rute 160 Nyborgvej</li>
+						<li id="rute162otterupvej" class="list-object" data-value="55.472578256619414,10.384912490844727" onclick="selectObject(this,'place');">Rute 162 Otterupvej</li>
+						<li id="rute165kertemindevej" class="list-object" data-value="55.44035953628735,10.51614761352539" onclick="selectObject(this,'place');">Rute 165 Kertemindevej</li>
+						<li id="rute168assensvej" class="list-object" data-value="55.31156323899598,10.268268585205076" onclick="selectObject(this,'place');">Rute 168 Assensvej</li>
+						<li id="rute301ørbækvej" class="list-object" data-value="55.319768755010216,10.569705963134766" onclick="selectObject(this,'place');">Rute 301 Ørbækvej</li>
+						<li id="rute303rugårdsvej" class="list-object" data-value="55.4309128095787,10.245523452758789" onclick="selectObject(this,'place');">Rute 303 Rugårdsvej</li>
+						<li id="rute311bogensevej" class="list-object" data-value="55.45321124441765,10.272989273071289" onclick="selectObject(this,'place');">Rute 311 Bogensevej</li>
+						<li class="list-object"></li>
+					</ul>
+				</div>
+				<div id="history" class="hidden">
+					<ul id="history-ul">
+					
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<!--ROUTE DESCRIPTION-->
+		<div id="route-description" class="hidden route-description-closed">
+			<div class="route-description-content">
+				<div class="route-description-headline">
+					<div class="route-options-btn" id="show-route">Detaljer</div>
+					<div class="route-options-btn" id="route-info"></div>
+					<div class="route-options-btn" id="close-route" onclick="closeRoute();">Luk</div>
+				</div>
+				<ul id="route-description-ul">
+				
+				</ul>
+			</div>
+		</div>
+		
+		<!--ROUTE STEP BY STEP-->
+		<div id="route-steps" class="hidden route-steps-closed">
+			<div class="route-description-content">
+				<div class="route-description-headline">
+					<div class="route-options-btn" id="step-of-steps"></div>
+					<div class="route-options-btn" id="route-steps-info"></div>
+					<div class="route-options-btn" id="close-steps" onclick="toggleRouteSteps();">Luk detajler</div>
+				</div>
+				<div id="route-steps-content">
+					<div id="route-steps-description"></div>
+					<div id="route-steps-back" onclick="updateRouteSteps('back');" class="hidden"></div>
+					<div id="route-steps-forward" onclick="updateRouteSteps('forward');" class="hidden"></div>
+				</div>
+			</div>
+		</div>
+
+		<!--READOUT PAGE-->
+		<div class="hidden content-page content-closed" id="readout-page">
+			<div class="content-top-bar">
+				<div class="back-btn" onclick="backAnimate(this); toggleOverlayPage('readout');"></div>
+				<div class="content-headline">Visninger</div>
+			</div>
+			<div class="content">
+				<fieldset>
+					<label for=""><strong>Visninger</strong></label>
+					<label for="available" class="input-click">
+						<input type="radio" name="readoutRadios" id="available" value="available" onclick="updateReadoutSettings(this);" checked/>
+						<span>Ledige pladser</span>
+					</label>
+					<label for="max" class="input-click">
+						<input type="radio" name="readoutRadios" id="max" value="max" onclick="updateReadoutSettings(this);"/>
+						<span>Pladser i alt</span>
+					</label>
+					<label for="price" class="input-click">
+						<input type="radio" name="readoutRadios" id="price" value="price" onclick="updateReadoutSettings(this);"/>
+						<span>Pris</span>
+					</label>
+					<label for="payperiod" class="input-click">
+						<input type="radio" name="readoutRadios" id="payperiod" value="payperiod" onclick="updateReadoutSettings(this);"/>
+						<span>Betalingsperiode</span>
+					</label>
+					<label for="type" class="input-click">
+						<input type="radio" name="readoutRadios" id="type" value="type" onclick="updateReadoutSettings(this);"/>
+						<span>Type</span>
+					</label>
+				</fieldset>
+			</div>
+		</div>
+		
+		<!--FILTER PAGE-->
+		<div class="hidden content-page content-closed" id="filter-page">
+			<div class="content-top-bar">
+				<div class="back-btn" onclick="backAnimate(this); toggleOverlayPage('filter');"></div>
+				<div class="content-headline">Filtre</div>
+			</div>
+			<div class="content">
+				<fieldset>  
+					<label for=""><strong>Betalingsmuligheder</strong></label>
+					<label for="prepay-coin" class="input-click">
+						<input type="checkbox" class="filter" id="prepay-coin" value="prepay-coin" onclick="updateFilterSettings(this);" checked/>
+						<span>Forudbetaling med mønter</span>
+					</label>
+					
+					<label for="payment-after-card" class="input-click">
+						<input type="checkbox" class="filter" id="payment-after-card" value="payment-after-card" onclick="updateFilterSettings(this);" checked/>
+						<span>Bagudbetaling med kort</span>
+					</label>
+				 
+					<label for="prepay-card" class="input-click">
+						<input type="checkbox" class="filter" id="prepay-card" value="prepay-card" onclick="updateFilterSettings(this);" checked/>
+						<span>Forudbetaling med kort</span>
+					</label>
+							
+					<label for="easypark" class="input-click">
+						<input type="checkbox" class="filter" id="easypark" value="easypark" onclick="updateFilterSettings(this);" checked/>
+						<span>Easypark</span>
+					</label>
+					
+					<label for="monthly-card" class="input-click">
+						<input type="checkbox" class="filter" id="monthly-card" value="monthly-card" onclick="updateFilterSettings(this);" checked/>
+						<span>Månedskort</span>
+					</label>
+					
+					<label for="quickcard" class="input-click">
+						<input type="checkbox" class="filter" id="quickcard" value="quickcard" onclick="updateFilterSettings(this);" checked/>
+						<span>Quickcard</span>
+					</label>
+				</fieldset>
+				<fieldset>  
+					<label for=""><strong>Tilgængelighed</strong></label>
+					<label for="hcap1" class="input-click">
+						<input type="checkbox" class="filter" id="hcap1" value="checkbox 1" onclick="updateFilterSettings(this);" disabled checked/>
+						<span>Vis almindelig offentlig parkering</span>
+					</label>
+				 
+					<label for="hcap2" class="input-click">
+						<input type="checkbox" class="filter" id="hcap2" value="checkbox 2" onclick="updateFilterSettings(this);" disabled checked/>
+						<span>Vis handicapparkering</span>
+					</label>
+					
+					<label for="hcap3" class="input-click">
+						<input type="checkbox" class="filter" id="hcap3" value="checkbox 2" onclick="updateFilterSettings(this);" disabled checked/>
+						<span>Vis handicapparkering for kassevogne</span>
+					</label>
+				</fieldset>
+			</div>
+		</div>
+		
+		<!--SETTINGS PAGE-->
+		<div class="hidden content-page content-closed" id="settings-page">
+			<div class="content-top-bar">
+				<div class="back-btn" onclick="backAnimate(this); toggleOverlayPage('settings');"></div>
+				<div class="content-headline">Indstillinger</div>
+			</div>
+			<div class="content">
+				<fieldset>
+					<label for=""><strong>Visning ved opstart</strong></label>
+					<label for="settingslast" class="input-click">
+						<input type="radio" name="settingRadios" class="settingRadio" id="settingslast" value="last" onclick="updateSetting(this);" checked/>
+						<span>Seneste anvendte</span>
+					</label>
+					<label for="settingsavailable" class="input-click">
+						<input type="radio" name="settingRadios" class="settingRadio" id="settingsavailable" value="available" onclick="updateSetting(this);"/>
+						<span>Ledige pladser</span>
+					</label>
+					<label for="settingsmax" class="input-click">
+						<input type="radio" name="settingRadios" class="settingRadio" id="settingsmax" value="max" onclick="updateSetting(this);"/>
+						<span>Pladser i alt</span>
+					</label>
+					<label for="settingsprice" class="input-click">
+						<input type="radio" name="settingRadios" class="settingRadio" id="settingsprice" value="price" onclick="updateSetting(this);"/>
+						<span>Pris</span>
+					</label>
+					<label for="settingspayperiod" class="input-click">
+						<input type="radio" name="settingRadios" class="settingRadio" id="settingspayperiod" value="payperiod" onclick="updateSetting(this);" />
+						<span>Betalingsperiode</span>
+					</label>
+					<label for="settingstype" class="input-click">
+						<input type="radio" name="settingRadios" class="settingRadio" id="settingstype" value="type" onclick="updateSetting(this);" />
+						<span>Type</span>
+					</label>
+				</fieldset>
+				<fieldset>				
+					<label for=""><strong>Rutevejledning</strong></label>
+					<label for="routeOdense" class="input-click">
+						<input type="radio" name="routeRadios"  class="routeProvider" id="routeOdense" value="routeOdense" onclick="updateSetting(this);" checked/>
+						<span>Odense's ruteplanlægger</span>
+					</label>
+					<label for="routeGoogle" class="input-click">
+						<input type="radio" name="routeRadios"  class="routeProvider" id="routeGoogle" value="routeGoogle" onclick="updateSetting(this);"/>
+						<span>Google Maps</span>
+					</label>
+				</fieldset>
+				<fieldset>
+					<label for=""><strong>Tilgængelighed</strong></label>
+					<label for="handicapInfo" class="input-click">
+						<input type="checkbox" class="settingCheckbox" id="handicapInfo" value="" onclick="updateSetting(this);" disabled/>
+						<span>Vis info for kørestolsbrugere</span>
+					</label>
+				 
+					<label for="handicapToilet" class="input-click">
+						<input type="checkbox" class="settingCheckbox" id="handicapToilet" value="" onclick="updateSetting(this);" disabled/>
+						<span>Vis handicaptoiletter</span>
+					</label>
+				</fieldset>
+			</div>
+		</div>
+				
+        <!--TUTORIAL PAGE-->
+        <div class="hidden content-page content-closed" id="tutorial-page">    
+			<div class="content-top-bar">
+				<div class="back-btn" onclick="backAnimate(this); toggleOverlayPage('tutorial');"></div>
+				<div class="content-headline">Brugervejledning</div>
+			</div>
+			<div id="tutorial-content">
+				<div class="slide blue"></div><!--
+				--><div class="slide green"></div><!--
+				--><div class="slide pink"></div><!--
+				--><div class="slide yellow"></div><!--
+				--><div class="slide purple"></div>  
+			</div>
+
+			<div id="tutorial-counter">
+				<div class="circle circle-active" id="circle-1"></div>
+				<div class="circle" id="circle-2"></div>
+				<div class="circle" id="circle-3"></div>
+				<div class="circle" id="circle-4"></div>
+				<div class="circle" id="circle-5"></div>
+			</div>
+
+			<div class="slide-btn" id="prev-btn">
+			</div>
+
+			<div class="slide-btn" id="next-btn">
+			</div>
+        </div>
+		
+		<!--ABOUT PAGE-->
+		<div class="hidden content-page content-closed" id="about-page">
+			<div class="content-top-bar">
+				<div class="back-btn" onclick="backAnimate(this); toggleOverlayPage('about');"></div>
+				<div class="content-headline">Om siden</div>
+			</div>
+			<div class="content">
+				<p>Dette er en beta-version af Odense Kommunes webapp omkring offentlig parkering i Odense. 
+				Siden viser offentlig parkering i bymidten, der administreres af <a href="http://www.odense.dk/parkering" target="_blank">Odense Kommune</a>, <a href="http://www.q-park.dk/" target="_blank">Q-park</a> og <a href="http://www.apcoa.dk/" target="_blank">Apcoa parking.</a> 
+				Der vises kun parkeringsanlæg med mindst 10 p-pladser. Almindelig kantstensparkering uden tidsbegrænsning vises ikke.<br><br>
+				Kortservicen er lavet ved brug af Open source kortprojektet <a href="http://leafletjs.com/" target="_blank">Leaflet</a>, og kortdata fra <a href="http://www.osm.org" target="_blank">OpenStreetMap</a> og Odense Kommune. 
+				Webappen er udviklet i et samarbejde mellem Odense Kommune og de odenseanske webudviklere <a href="https://www.linkedin.com/pub/christian-corfixen/22/67/866" target="_blank">Christian Corfixen</a> og <a href="https://www.linkedin.com/pub/peter-rasmussen/18/753/84b" target="_blank">Peter Rasmussen.</a></p>				
+			</div>
+		</div>
+		
+		<!--CONTACT PAGE-->
+		<div class="hidden content-page content-closed" id="contact-page">
+			<div class="content-top-bar">
+				<div class="back-btn" onclick="backAnimate(this); toggleOverlayPage('contact');"></div>
+				<div class="content-headline">Kontakt</div>
+			</div>
+			<div class="content">
+				<div class="contact-content">
+					<div id="contact-parkingspot-div" class="hidden">
+						<label for="contact-parkingspot">Tip vedrørende:</label>
+						<div id="contact-parkingspot">				
+						</div>
+					</div>
+					<label for="msg-content">Besked</label>
+					<textarea id="msg-content"></textarea>
+					<label for="msg-email">E-mail*</label>
+					<input type="text" id="msg-email" />
+					<p class="italic">*Din email bruges til at vi kan besvare din henvendelse</p>
+					<div class="btn-small blue" id="contact-btn" onclick="sendErrorReport();">Send besked</div>
+				</div>
+			</div>
+		</div>
+		
+		<!--SHARE PAGE-->
+		<div class="hidden content-page content-closed" id="share-page">
+			<div class="content-top-bar">
+				<div class="back-btn" onclick="backAnimate(this); toggleOverlayPage('share');"></div>
+				<div class="content-headline">Del på sociale medier</div>
+			</div>
+			<div class="content">
+				<ul>
+					<li class="social-li">Del på Facebook</li>
+					<li class="social-li">Del på Twitter</li>
+					<li class="social-li">Del på Google+</li>
+				</ul>
+			</div>
+		</div>
+		
+        <script src="js/leaflet.js"></script>
+        <script src="js/main.js"></script>
+		<script src="js/temp.js"></script>
+		<script src="js/addMarkers.js"></script>
+		<script src="js/route.js"></script>
+		<link rel="stylesheet" href="js/Leaflet.Pancontrol/L.Control.Pan.css">
+		<link rel="stylesheet" href="js/Leaflet.Pancontrol/L.Control.Pan.ie.css">
+		<script src="js/Leaflet.Pancontrol/L.Control.Pan.js"></script>
+
+        <!--
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
+        </script>
+        -->
+    </body>
+</html>

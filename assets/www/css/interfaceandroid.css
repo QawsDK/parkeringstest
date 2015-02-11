@@ -1,0 +1,62 @@
+#top-bar {
+	height: 50px;
+	width: 100%;
+	background-color: rgba(229, 229, 229, 0.3);
+	border-bottom: 1px rgba(160, 160, 160, 0.3) solid;
+	position: absolute;
+	top: 0;
+	z-index: 10000;
+}
+
+#bot-bar {
+	height: 50px;
+	width: 100%;
+	background-color: rgba(229, 229, 229, 0.3);
+	border-top: 1px rgba(160, 160, 160, 0.3) solid;
+	position: absolute;
+	bottom: 1px;
+	z-index: 10000;
+}
+
+.bot-bar-option {
+	height: 50px;
+	width: 50%;
+	text-align: center;
+}
+
+#menu-toggle {
+	height: 50px;
+	width: 50px;
+	position: absolute;
+	z-index: 6001;
+	right: 0px;
+	top: 0px;
+	padding: 10px 10px;
+	margin: 0px;
+	border-left: 1px solid #ccc;
+	display: block;
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	-ms-transition: all 0.5s ease;
+}
+
+.icon-bar:first-child {
+	margin-top: 5px;
+}
+
+.icon-bar {
+	margin-top: 4px;
+	display: block;
+	width: 30px;
+	height: 4px;
+	border-radius: 2px;	
+}
+
+#menu {
+	height: 100%;
+	width: 60%;
+	position: absolute;
+	right: 160%;
+	border-left: 1px solid #ccc;
+}

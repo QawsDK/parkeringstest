@@ -1,0 +1,21 @@
+﻿<div class="content-top-bar">
+	<div class="back-btn" onclick="closeOverlayPage();"><img class="back-img" src="img/icons/ic_chevron_left_grey600_18dp.png"></div>
+	<div class="content-headline">Visninger</div>
+</div>
+<div class="content">
+	<fieldset>
+    <label for="">Visninger</label>
+    <label for="available">
+      <input type="radio" name="radios" id="available" value="available" onclick="changeReadout(this);"/>
+      <span>Ledige pladser</span>
+    </label>
+    <label for="max">
+      <input type="radio" name="radios" id="max" value="max" onclick="changeReadout(this);"/>
+      <span>Pladser i alt</span>
+    </label>
+	<label for="price">
+      <input type="radio" name="radios" id="price" value="price" onclick="changeReadout(this);"/>
+      <span>Pris</span>
+    </label>
+  </fieldset>
+</div>
